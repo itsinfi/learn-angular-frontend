@@ -1,0 +1,55 @@
+label {
+  font-size: 18px;
+}
+
+input {
+  width: 400px;
+  height: 40px;
+  border-radius: 30px;
+}
+
+button {
+  background-color: #E3000B;
+  color: #eee;
+  height: 48px;
+  width: 100px;
+  border-radius: 30px;
+}
+
+button:hover {
+  background-color: #f8636a;
+}
+
+input, button {
+  display: inline-block;
+}
+
+.carItem {
+  height: 100px;
+  background: linear-gradient(to top, rgba(150, 60, 60, 0.2), rgba(210, 200, 200, 0.2));
+  background-color: #777;
+  border-radius: 30px;
+}
+
+.carItem:hover {
+  position: relative;
+  bottom: 2px;
+  background-color: #888;
+}
+
+.flag {
+  object-fit: contain;
+  width: 60px;
+  border-radius: 5px;
+}
+
+
+.linkButton{
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: #eee;
+  cursor: pointer;
+  text-decoration: none;
+}

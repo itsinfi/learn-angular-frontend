@@ -1,1 +1,75 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+body {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 0, 0, 0.1));
+  background-color: #333;
+  color: #eee;
+}
+
+header {
+  background-color: #E3000B;
+  border-radius: 30px 30px 0 0;
+}
+
+.br30 {
+  border-radius: 30px;
+}
+
+.br15 {
+  border-radius: 15px;
+}
+
+.box-fit-cover{
+  object-fit: cover;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.ph-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mh-3 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mv-3 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.m-3 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+
+.p-3 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+}
+
+.box-shadow {
+  box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.6);
+}
+
+.expanded {
+  flex: 1;
+}
+
+.center {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
