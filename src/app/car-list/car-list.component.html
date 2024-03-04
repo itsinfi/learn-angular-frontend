@@ -18,14 +18,14 @@
             <div class="mh-3">
               <p>{{car.price}}</p>
             </div>
-            <!-- <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else test">
+            <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
               <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
             </div>
-            <ng-template #test [ngOutletContext]="context">
+            <ng-template #germanFlag>
               <div class="mh-3" style="width: 60px;">
                 <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
               </div>
-            </ng-template> -->
+            </ng-template>
           </div>
         </div>
       </a>

@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  height: 130vh;
+  margin: 0;
+  padding: 0;
+}
+
+.divider {
+  border-bottom: 10px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  width: 100%;
+}
+
+.detail-card {
+  background: linear-gradient(to top, rgba(150, 60, 60, 0.2), rgba(210, 200, 200, 0.2));
+  background-color: #777;
+  border-radius: 30px;
+  margin: 2rem;
+  padding: 1rem;
+  padding-right: 2rem;
+}

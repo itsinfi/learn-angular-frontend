@@ -1,17 +1,24 @@
-<div class="center">
-  <img class="br15 box-fit-cover" src="{{car.photo}}" alt="" height="400px">
-</div>
-<div>
-  <div>
-    <h3>{{car.brand}} {{car.name}}</h3>
-    <p>{{car.price}}</p>
-  </div>
-  <!-- <div class="mh-3 box-fit-cover" style="width: 60px;" *ngIf="car.isItalian; else _test">
-    <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
-  </div>
-  <ng-template #_test [ngOutletContext]="context">
-    <div class="mh-3 box-fit-cover" style="width: 60px;">
-      <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
+<div class="detail-card">
+  <div class="row mh-3">
+    <div class="divider"></div>
+    <div class="center">
+      <img class="m-3 br15 box-fit-cover" src="{{car.photo}}" alt="" height="400px">
     </div>
-  </ng-template> -->
+    <div class="divider mr-3"></div>
+  </div>
+  <div class="row">
+    <div class="mh-3">
+      <h3>{{car.brand}} {{car.name}}</h3>
+      <p>{{car.price}}</p>
+    </div>
+    <div class="expanded"></div>
+    <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
+      <img class="flag mh-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
+    </div>
+    <ng-template class="mr-3" #germanFlag>
+      <div class="mr-3" style="width: 60px;">
+        <img class="flag mr-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
+      </div>
+    </ng-template>
+  </div>
 </div>
