@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Car } from './car';
 import { AppComponent } from '../app.component';
+import { DataBaseService } from '../db/data-base.service';
 
 @Component({
   selector: 'app-car-list',
@@ -9,20 +10,25 @@ import { AppComponent } from '../app.component';
 })
 
 export class CarListComponent {
-  // @Input() fullCarList: Car[] = []
-
   filteredCarList: Car[] = []
+  carList: Car[] = []
 
   ngOnInit() {
-    this.filteredCarList = AppComponent.getCarList()
+    this.readCars()
+  }
+
+  private async readCars() {
+    this.carList = await DataBaseService.readCars()
+    this.filteredCarList = this.carList
   }
 
   searchLegoCars(query: string) {
+    console.log("AAAAAAAAAAAAAAAAAAAAAAAA")
     if (!query) {
-      this.filteredCarList = AppComponent.getCarList()
+      this.filteredCarList = this.carList
       return
     }
-    this.filteredCarList = AppComponent.getCarList().filter(c => this.searchCallback(c, query))
+    this.filteredCarList = this.carList.filter(c => this.searchCallback(c, query))
   }
 
   searchCallback(c: Car, query: string) {

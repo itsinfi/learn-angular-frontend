@@ -5,5 +5,6 @@ export interface Car {
   horsepower: number,
   isItalian: boolean,
   photo: string,
-  price: string
+  price: number,
+  description: string
 }
