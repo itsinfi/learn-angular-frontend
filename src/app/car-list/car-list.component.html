@@ -1,9 +1,9 @@
-<div class="m-3">
+<div class="mh-9 mv-9">
   <label for="car-search">Search for cool lego cars:</label>
   <input id="car-search" class="ph-3 mh-3" #search type="text" placeholder="Ferrari F40" (keydown.enter)="searchLegoCars(search.value)">
   <button (click)="searchLegoCars(search.value)">Search</button>
 
-  <div>
+  <div class="mv-9">
     <article *ngFor="let car of filteredCarList">
       <a style="text-decoration: none; color: #eee;"  [routerLink]="['/car-details/', car.id]">
         <div class="carItem box-shadow p-3 mv-3">
