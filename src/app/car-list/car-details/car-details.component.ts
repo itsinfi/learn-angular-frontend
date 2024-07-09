@@ -1,8 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Car } from '../car';
-import { AppComponent } from '../../app.component';
 import { DataBaseService } from '../../db/data-base.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-car-details',
@@ -11,23 +11,46 @@ import { DataBaseService } from '../../db/data-base.service';
 })
 export class CarDetailsComponent {
 
+  // subscription to car observable
+  carSubscription!: Subscription
+
+  // car object
   car!: Car;
 
-  constructor(private route: ActivatedRoute) { }
+  // error string
+  error!: string;
 
+  // Constructor
+  constructor(private dataBaseService: DataBaseService, private route: ActivatedRoute) {}
+
+  // On construct
   ngOnInit(): void {
-    this.readCar()
+    console.log('INIT')
+
+    // read id from route (default to 0)
+    const id = this.route.snapshot.paramMap.get('id') ?? '0';
+
+    // get car observable with id via http request
+    const _car = this.dataBaseService.readCar(id)
+
+    // add subscription to observable and save it
+    this.carSubscription = _car.subscribe({
+
+      // handle successful read
+      next: car => {
+        this.car = car
+      },
+
+      //handle unsuccessful read
+      error: err => {
+        this.error = "No car found :C"
+      },
+    })
   }
 
-  private async readCar() {
-    var id = this.route.snapshot.paramMap.get('id') ?? '0';
-
-    var _car = await DataBaseService.readCar(id)
-
-    if (_car === undefined) {
-      throw("Invalid id")
-    } else {
-      this.car = _car
-    }
+  // On Deconstruction
+  ngOnDestroy() {
+    console.log('DESTroy')
+    this.carSubscription.unsubscribe()
   }
 }

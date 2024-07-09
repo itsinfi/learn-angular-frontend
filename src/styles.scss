@@ -90,10 +90,15 @@ header {
 }
 
 .p-3 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-bottom: 1rem;
-  padding-top: 1rem;
+  padding: 1rem;
+}
+
+.p-6 {
+  padding: 2rem;
+}
+
+.p-9 {
+  padding: 3rem;
 }
 
 .box-shadow {

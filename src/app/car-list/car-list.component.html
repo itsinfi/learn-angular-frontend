@@ -4,32 +4,45 @@
   <button (click)="searchLegoCars(search.value)">Search</button>
 
   <div class="mv-9">
-    <article *ngFor="let car of filteredCarList">
-      <a style="text-decoration: none; color: #eee;"  [routerLink]="['/car-details/', car.id]">
-        <div class="carItem box-shadow p-3 mv-3">
-          <div class="row">
-            <img class="mh-3 br15 box-fit-cover" src="{{car.photo}}" alt="{{car.brand}} {{car.name}}" height="80px" width="120px" >
-            <div class="mh-3">
-              <h3>{{car.brand}} {{car.name}}</h3>
-              <p>{{car.horsepower}} HP</p>
-            </div>
-            <div class="expanded">
-            </div>
-            <div class="mh-3">
-              <p>{{car.price}}€</p>
-            </div>
-            <div class="ml-3 mr-6" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
-              <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
-            </div>
-            <ng-template #germanFlag>
-              <div class="ml-3 mr-6" style="width: 60px;">
-                <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
-              </div>
-            </ng-template>
+
+      <div *ngIf="filteredCarList.length === 0; else listIsNotEmpty">
+          <div class="carItem">
+            <p class="p-6">
+              {{error}}
+            </p>
           </div>
-        </div>
-      </a>
-    </article>
+      </div>
+
+
+
+      <ng-template #listIsNotEmpty>
+        <article *ngFor="let car of filteredCarList">
+          <a style="text-decoration: none; color: #eee;"  [routerLink]="['/car-details/', car.id]">
+            <div class="carItem box-shadow p-3 mv-3">
+              <div class="row">
+                <img class="mh-3 br15 box-fit-cover" src="{{car.photo}}" alt="{{car.brand}} {{car.name}}" height="80px" width="120px" >
+                <div class="mh-3">
+                  <h3>{{car.brand}} {{car.name}}</h3>
+                  <p>{{car.horsepower}} HP</p>
+                </div>
+                <div class="expanded">
+                </div>
+                <div class="mh-3">
+                  <p>{{car.price}}€</p>
+                </div>
+                <div class="ml-3 mr-6" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
+                  <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
+                </div>
+                <ng-template #germanFlag>
+                  <div class="ml-3 mr-6" style="width: 60px;">
+                    <img class="flag mh-3" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </a>
+        </article>
+      </ng-template>
   </div>
 </div>
 

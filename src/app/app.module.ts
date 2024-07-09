@@ -1,18 +1,13 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarDetailsComponent } from './car-list/car-details/car-details.component';
-import { DataBaseService } from './db/data-base.service';
 
-export function initDB() {
-  return () => {
-    DataBaseService.init()
-    return Promise.resolve()
-  }
-}
+import { HttpClientModule } from '@angular/common/http';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -22,14 +17,11 @@ export function initDB() {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initDB,
-      multi: true},
-    provideClientHydration()
+    provideClientHydration(),
   ],
   bootstrap: [AppComponent]
 })

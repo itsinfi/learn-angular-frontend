@@ -1,7 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 import { Car } from './car';
-import { AppComponent } from '../app.component';
 import { DataBaseService } from '../db/data-base.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-car-list',
@@ -10,20 +10,45 @@ import { DataBaseService } from '../db/data-base.service';
 })
 
 export class CarListComponent {
-  filteredCarList: Car[] = []
+  // ongoing subscription to car list observable
+  carListSubscription!: Subscription
+
+  // car lists (filtered and all)
   carList: Car[] = []
+  filteredCarList: Car[] = []
 
+  // error string
+  error: string = "No cars found."
+
+  // Constructor
+  constructor(private dataBaseService: DataBaseService) {}
+
+  // On Construction
   ngOnInit() {
-    this.readCars()
+    console.log('INIT')
+    // get observable for all cars via http request
+    const carListObservable = this.dataBaseService.readCars()
+
+    // subscribe to observable and save it
+    this.carListSubscription = carListObservable.subscribe({
+      next: cars => {
+        this.carList = cars
+        this.filteredCarList = cars
+      },
+      error: err => {
+        this.error = err.message
+      },
+    })
   }
 
-  private async readCars() {
-    this.carList = await DataBaseService.readCars()
-    this.filteredCarList = this.carList
+  // On Destruction
+  ngOnDestroy() {
+    console.log('DESTroy')
+    this.carListSubscription.unsubscribe()
   }
 
+  // search for lego cars by title
   searchLegoCars(query: string) {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAA")
     if (!query) {
       this.filteredCarList = this.carList
       return
@@ -31,6 +56,7 @@ export class CarListComponent {
     this.filteredCarList = this.carList.filter(c => this.searchCallback(c, query))
   }
 
+  // search callback to filter cars
   searchCallback(c: Car, query: string) {
     const fullCarName = c.brand.toLowerCase() + ' ' + c.name.toLowerCase()
     return fullCarName.includes(query.toLowerCase())

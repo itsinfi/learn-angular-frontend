@@ -1,86 +1,27 @@
 import { Injectable } from '@angular/core';
-import * as mysql from 'mysql2/promise'
 import { readFileSync } from 'fs';
 import { Car } from '../car-list/car';
+import * as mysql from 'mysql2/promise';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataBaseService {
 
-  constructor() { }
+  private apiUrl = 'http://localhost:3000'
 
-  static connection: mysql.Connection
+  constructor(private http: HttpClient) { }
 
-  static async init() {
-    try {
-      const dbConfigJSONString = readFileSync('database.config.json', 'utf-8')
-      const dbConfig = JSON.parse(dbConfigJSONString)
-      console.log(dbConfig)
-
-      DataBaseService.connection = await mysql.createConnection(dbConfig)
-
-      this.connection.connect()
-    } catch (e) {
-      console.error(e)
-    }
+  // get all cars
+  readCars(): Observable<Car[]> {
+    return this.http.get<Car[]>(`${this.apiUrl}/cars`);
   }
 
-  static async readCars(): Promise<Car[]> {
-    try {
-      const rows = await this.connection.query<mysql.RowDataPacket[]>('SELECT * FROM car;')
-      console.log(rows)
-      const carsList: Car[] = rows[0].map((row) => {
-        return {
-          id: row['id'],
-          name: row['name'],
-          brand: row['brand'],
-          horsepower: row['horsepower'],
-          isItalian: row['isItalian'],
-          photo: row['photo'],
-          price: row['price'],
-          description: row['description']
-        }
-      })
-      console.log(carsList)
-      return carsList
-    } catch (e) {
-      console.error(e)
-      if (e instanceof TypeError) {
-        setTimeout(() => {
-          location.reload()
-        }, 1000);
-      }
-      return []
-    }
+  // get single car
+  readCar(id: string): Observable<Car> {
+    return this.http.get<Car>(`${this.apiUrl}/cars/${id}`);
   }
 
-  static async readCar(id: string): Promise<Car> {
-    try {
-      const rows = await this.connection.query<mysql.RowDataPacket[]>(`SELECT * FROM car WHERE id = ${id} LIMIT 1;`)
-      console.log(rows)
-      const carsList: Car[] = rows[0].map((row) => {
-        return {
-          id: row['id'],
-          name: row['name'],
-          brand: row['brand'],
-          horsepower: row['horsepower'],
-          isItalian: row['isItalian'],
-          photo: row['photo'],
-          price: row['price'],
-          description: row['description']
-        }
-      })
-      console.log(carsList)
-      return carsList[0]
-    } catch (e) {
-      console.error(e)
-      if (e instanceof TypeError) {
-        setTimeout(() => {
-          location.reload()
-        }, 1000);
-      }
-      throw e
-    }
-  }
 }
