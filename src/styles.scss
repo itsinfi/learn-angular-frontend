@@ -29,7 +29,6 @@ header {
   background-color: var(--primary-50);
   padding: 20px;
   border-radius: var(--border-radius);
-  color: var(--light-text);
 }
 
 .light-text {
@@ -41,6 +40,50 @@ body, h1, h2, h3, h4, h5, h6, p {
   font-weight: 100;
   color: var(--dark-text);
 }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+}
+
+label {
+  font-size: 18px;
+}
+
+input {
+  width: 400px;
+  height: 45px;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  background-color: var(--light-text);
+}
+
+button {
+  border-radius: var(--border-radius);
+  outline: none;
+  border: none;
+  background-color: var(--primary-50);
+  color: var(--light-text);
+  height: 45px;
+  padding: 15px;
+  will-change: outline, background-color;
+  transition: outline 500ms, background-color 500ms;
+}
+
+button:hover {
+  background-color: var(--primary);
+  outline: solid 1px var(--dark-text);
+}
+
+input, button {
+  display: inline-block;
+}
+
+img {
+  border-radius: var(--border-radius);
+}
+
+
 
 .box-fit-cover{
   object-fit: cover;
