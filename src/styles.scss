@@ -1,24 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
 
-
 body {
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), rgba(255, 0, 0, 0.1));
-  background-color: #333;
-  color: #eee;
+  background: linear-gradient(#FF000015, #FF000020);
+  min-height: 100vh;
+  max-height: none;
+
+  // Colors:
+  --primary: #E3000B;
+  --primary-50: #E3000BC8;
+  --primary-25: #E3000B64;
+  --primary-12: #E3000B32;
+  --secondary: #FFED00;
+  --secondary-50: #FFED00C8;
+  --secondary-25: #FFED0064;
+  --secondary-12: #FFED0032;
+  --light-text: #FAFAFA;
+  --dark-text: #272727;
+  --card-color: #E3000B16;
+  --error: #000000;
+  --warning: #000000;
+  --success: #000000;
+
+  // Border radius:
+  --border-radius: 8px;
 }
 
 header {
-  background-color: #E3000B;
-  border-radius: 30px 30px 0 0;
+  background-color: var(--primary-50);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  color: var(--light-text);
 }
 
-.br30 {
-  border-radius: 30px;
+.light-text {
+  color: var(--light-text);
 }
 
-.br15 {
-  border-radius: 15px;
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family:'Franklin Gothic Bold', 'Arial Narrow', Arial, sans-serif;
+  font-weight: 100;
+  color: var(--dark-text);
 }
 
 .box-fit-cover{
@@ -89,6 +110,10 @@ header {
   margin-left: 2rem;
 }
 
+.mt-9 {
+  margin-top: 3rem;
+}
+
 .p-3 {
   padding: 1rem;
 }
@@ -102,7 +127,7 @@ header {
 }
 
 .box-shadow {
-  box-shadow: 5px 5px 10px rgba($color: #000000, $alpha: 0.6);
+  box-shadow: 5px 5px 10px var(--box-d)
 }
 
 .expanded {
@@ -113,4 +138,16 @@ header {
   display: flex;
   width: 100%;
   justify-content: center;
+}
+
+.mw-1250 {
+  max-width: 1250px;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.mh-auto {
+  margin: 0 auto;
 }

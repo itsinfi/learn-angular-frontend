@@ -25,7 +25,6 @@ export class CarDetailsComponent {
 
   // On construct
   ngOnInit(): void {
-    console.log('INIT')
 
     // read id from route (default to 0)
     const id = this.route.snapshot.paramMap.get('id') ?? '0';
@@ -50,7 +49,6 @@ export class CarDetailsComponent {
 
   // On Deconstruction
   ngOnDestroy() {
-    console.log('DESTroy')
     this.carSubscription.unsubscribe()
   }
 }

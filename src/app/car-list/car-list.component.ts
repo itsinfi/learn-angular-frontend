@@ -25,7 +25,7 @@ export class CarListComponent {
 
   // On Construction
   ngOnInit() {
-    console.log('INIT')
+
     // get observable for all cars via http request
     const carListObservable = this.dataBaseService.readCars()
 
@@ -43,7 +43,6 @@ export class CarListComponent {
 
   // On Destruction
   ngOnDestroy() {
-    console.log('DESTroy')
     this.carListSubscription.unsubscribe()
   }
 

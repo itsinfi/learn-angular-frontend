@@ -4,20 +4,27 @@ label {
 
 input {
   width: 400px;
-  height: 40px;
-  border-radius: 30px;
+  height: 45px;
+  border-radius: var(--border-radius);
+  border: none;
+  outline: none;
+  background-color: var(--light-text);
 }
 
 button {
-  background-color: #E3000B;
-  color: #eee;
-  height: 48px;
-  width: 100px;
-  border-radius: 30px;
+  border-radius: var(--border-radius);
+  outline: none;
+  border: none;
+  background-color: var(--primary-50);
+  color: var(--light-text);
+  height: 45px;
+  padding: 15px;
+  will-change: background-color;
+  transition: background-color 500ms;
 }
 
 button:hover {
-  background-color: #f8636a;
+  background-color: var(--primary-25);
 }
 
 input, button {
@@ -26,21 +33,22 @@ input, button {
 
 .carItem {
   height: 100px;
-  background: linear-gradient(to top, rgba(150, 60, 60, 0.2), rgba(210, 200, 200, 0.2));
-  background-color: #777;
-  border-radius: 30px;
+  background-color: var(--card-color);
+  border-radius: var(--border-radius);
+  will-change: transform, background-color;
+  transition: transform 500ms, background-color 500ms;
 }
 
 .carItem:hover {
-  position: relative;
-  bottom: 2px;
-  background-color: #888;
+  transform: translateY(-5px);
+  background-color: var(--primary-12);
 }
 
 .flag {
   object-fit: contain;
   width: 60px;
   border-radius: 5px;
+  outline: solid 1px #00000020;
 }
 
 
