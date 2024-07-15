@@ -1,5 +1,5 @@
 .carItem {
-  height: 100px;
+  // height: 200px;
   background-color: var(--card-color);
   border-radius: var(--border-radius);
   outline: none;
@@ -31,4 +31,8 @@
   color: #eee;
   cursor: pointer;
   text-decoration: none;
+}
+
+.article-image {
+  background-color: #fff;
 }
