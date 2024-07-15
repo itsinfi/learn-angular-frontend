@@ -2,13 +2,17 @@
   height: 100px;
   background-color: var(--card-color);
   border-radius: var(--border-radius);
-  will-change: transform, background-color;
+  outline: none;
+  outline: none;
+  will-change: transform, background-color, outline;
   transition: transform 500ms, background-color 500ms;
 }
 
 .carItem:hover {
   transform: translateY(-5px);
   background-color: var(--primary-12);
+  outline: solid var(--primary-25) 1px;
+  outline-offset: -1px;
 }
 
 .flag {

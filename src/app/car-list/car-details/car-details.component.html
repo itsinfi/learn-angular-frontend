@@ -1,45 +1,46 @@
-<div [ngSwitch]="car" class="detail-card">
+<div class="scrollable-y h-70vh">
+  <div [ngSwitch]="car" class="detail-card mt-6">
 
 
 
-
-  <div *ngSwitchCase="undefined">
-    {{error}}
-  </div>
-
-
-
-
-
-  <div *ngSwitchDefault>
-
-    <div class="row mh-3">
-      <div class="divider"></div>
-      <div class="center">
-        <img class="m-3 br15 box-fit-cover" src="{{car.photo}}" alt="" height="400px">
-      </div>
-      <div class="divider mr-3"></div>
+    <div *ngSwitchCase="undefined">
+      {{error}}
     </div>
 
 
-    <div class="row">
-      <div class="mh-3">
-        <h3>{{car.brand}} {{car.name}}</h3>
-        <p>{{car.price}}€</p>
-      </div>
-      <div class="expanded"></div>
-      <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
-        <img class="flag mh-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
-      </div>
-      <ng-template class="mr-3" #germanFlag>
-        <div class="mr-3" style="width: 60px;">
-          <img class="flag mr-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
+
+
+
+    <div *ngSwitchDefault>
+
+      <div class="row mh-3">
+        <div class="center">
+          <img class="m-3 br15 box-fit-cover" src="{{car.photo}}" alt="{{car.brand}} {{car.name}}" height="400px">
         </div>
-      </ng-template>
+      </div>
+
+
+      <div class="row">
+        <div class="mh-3">
+          <h3>{{car.brand}} {{car.name}}</h3>
+          <p>{{car.price}}€</p>
+        </div>
+        <div class="expanded"></div>
+        <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
+          <img class="flag mh-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
+        </div>
+        <ng-template class="mr-3" #germanFlag>
+          <div class="mr-3" style="width: 60px;">
+            <img class="flag mr-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
+          </div>
+        </ng-template>
+      </div>
+
+
     </div>
 
 
   </div>
-
-
 </div>
+
+

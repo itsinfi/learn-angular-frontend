@@ -1,9 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
 
+// Fonts
+@font-face {
+  font-family: Inlanders;
+  src: url(/assets/fonts/Inlanders.otf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+// Body
 body {
-  background: linear-gradient(#FF000015, #FF000020);
-  min-height: 100vh;
-  max-height: none;
+  background: linear-gradient(#FF000020, #FF000010) no-repeat center center;
+  height: 100vh;
 
   // Colors:
   --primary: #E3000B;
@@ -25,39 +34,82 @@ body {
   --border-radius: 8px;
 }
 
+
+// Scroll & Overflow logic
+body {
+  overflow-y: hidden;
+}
+
+.scrollable-y {
+  overflow-y: scroll;
+  padding: 0 0;
+}
+
+.scrollable-y::-webkit-scrollbar {
+  display: none;
+}
+
+
+// Header
 header {
-  background-color: var(--primary-50);
+  background: linear-gradient(90deg, var(--primary), var(--primary-12));
+  outline: solid var(--primary-25) 1px;
   padding: 20px;
   border-radius: var(--border-radius);
 }
 
+.header-container {
+  border-radius: var(--border-radius);
+  background: url('assets/header-container.png') no-repeat center center;
+  background-size: cover;
+}
+
+
+// Text styles
 .light-text {
   color: var(--light-text);
 }
 
-body, h1, h2, h3, h4, h5, h6, p {
-  font-family:'Franklin Gothic Bold', 'Arial Narrow', Arial, sans-serif;
-  font-weight: 100;
+body, h2, h3, h4, h5, h6, p, input, button {
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: var(--dark-text);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Franklin Gothic Light', 'Arial Narrow', Arial, sans-serif;
+h1 {
+  font-family: 'Inlanders';
+  font-size: 50px;
+  padding: 0;
+  margin: 20px 0;
 }
 
 label {
   font-size: 18px;
 }
 
+input, button {
+  display: inline-block;
+}
+
+// Input field
 input {
   width: 400px;
   height: 45px;
   border-radius: var(--border-radius);
   border: none;
   outline: none;
+  outline-color: var(--light-text);
+  outline-width: 2px;
   background-color: var(--light-text);
+  will-change: outline;
+  transition: outline 50ms;
 }
 
+input:focus {
+  outline: solid var(--primary-12) 2px;
+}
+
+
+// Button styling
 button {
   border-radius: var(--border-radius);
   outline: none;
@@ -72,91 +124,44 @@ button {
 
 button:hover {
   background-color: var(--primary);
-  outline: solid 1px var(--dark-text);
+  outline: solid 1px var(--primary-50);
 }
 
-input, button {
-  display: inline-block;
-}
-
+// Image styling
 img {
   border-radius: var(--border-radius);
+  outline: solid 1px #00000020;;
+}
+
+.logo {
+  outline: none;
+  border-radius: none;
 }
 
 
-
+// Box fits
 .box-fit-cover{
   object-fit: cover;
 }
 
+.box-fit-fill{
+  object-fit: fill;
+}
+
+.box-fit-contain{
+  object-fit: contain;
+}
+
+
+// Rows & Columns
 .row {
   display: flex;
   width: 100%;
   align-items: center;
 }
 
-.ph-3 {
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
 
-.mh-3 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
-
-.mh-6 {
-  margin-left: 2rem;
-  margin-right: 2rem;
-}
-
-.mh-9 {
-  margin-left: 3rem;
-  margin-right: 3rem;
-}
-
-.mv-3 {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.mv-6 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.mv-9 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
-
-.m-3 {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-
-.mr-3 {
-  margin-right: 1rem;
-}
-
-.ml-3 {
-  margin-left: 1rem;
-}
-
-.mr-6 {
-  margin-right: 2rem;
-}
-
-.ml-6 {
-  margin-left: 2rem;
-}
-
-.mt-9 {
-  margin-top: 3rem;
-}
-
+// Paddings
 .p-3 {
   padding: 1rem;
 }
@@ -168,6 +173,135 @@ img {
 .p-9 {
   padding: 3rem;
 }
+
+.ph-3 {
+  padding: 0 1rem;
+}
+
+.ph-6 {
+  padding: 0 2rem;
+}
+
+.ph-9 {
+  padding: 0 3rem;
+}
+
+.pv-3 {
+  padding: 1rem 0;
+}
+
+.pv-6 {
+  padding: 2rem 0;
+}
+
+.ph-9 {
+  padding: 3rem 0;
+}
+
+
+// Margins
+.m-3 {
+  margin: 1rem;
+}
+
+.m-6 {
+  margin: 1rem;
+}
+
+.m-9 {
+  margin: 1rem;
+}
+
+.mh-3 {
+  margin: 0 1rem;
+}
+
+.mh-6 {
+  margin: 0 2rem;
+}
+
+.mh-9 {
+  margin: 0 3rem;
+}
+
+.mv-3 {
+  margin: 1rem 0;
+}
+
+.mv-6 {
+  margin: 2rem 0;
+}
+
+.mv-9 {
+  margin: 3rem 0;
+}
+
+.mr-3 {
+  margin-right: 1rem;
+}
+
+.mr-6 {
+  margin-right: 2rem;
+}
+
+.mr-9 {
+  margin-right: 3rem;
+}
+
+.ml-3 {
+  margin-left: 1rem;
+}
+
+.ml-6 {
+  margin-left: 2rem;
+}
+
+.ml-9 {
+  margin-left: 3rem;
+}
+
+.mt-3 {
+  margin-top: 1rem;
+}
+
+.mt-6 {
+  margin-top: 2rem;
+}
+
+.mt-9 {
+  margin-top: 3rem;
+}
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 2rem;
+}
+
+.mb-9 {
+  margin-bottom: 3rem;
+}
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.mh-auto {
+  margin: 0 auto;
+}
+
+.mv-auto {
+  margin: auto 0;
+}
+
+// Heights
+.h-70vh {
+  height: 70vh;
+}
+
+// Other
 
 .box-shadow {
   box-shadow: 5px 5px 10px var(--box-d)
@@ -191,6 +325,3 @@ img {
   justify-content: center;
 }
 
-.mh-auto {
-  margin: 0 auto;
-}
