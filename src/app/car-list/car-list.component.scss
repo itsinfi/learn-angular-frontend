@@ -1,7 +1,4 @@
-.carItem {
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
+.car-item {
   background-color: var(--card-color);
   border-radius: var(--border-radius);
   outline: none;
@@ -10,29 +7,11 @@
   transition: transform 500ms, background-color 500ms;
 }
 
-.carItem:hover {
+.car-item:hover {
   transform: translateY(-5px);
   background-color: var(--primary-12);
   outline: solid var(--primary-25) 1px;
   outline-offset: -1px;
-}
-
-.flag {
-  object-fit: contain;
-  width: 60px;
-  border-radius: 5px;
-  outline: solid 1px #00000020;
-}
-
-
-.linkButton{
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: #eee;
-  cursor: pointer;
-  text-decoration: none;
 }
 
 .article-image {

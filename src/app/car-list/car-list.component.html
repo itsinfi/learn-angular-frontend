@@ -6,7 +6,7 @@
 <div class="scrollable-y h-70vh">
 
   <div *ngIf="filteredCarList.length === 0; else listIsNotEmpty">
-      <div class="carItem">
+      <div class="car-item">
         <p class="p-6">
           {{error}}
         </p>
@@ -19,7 +19,7 @@
     <div class="grid-container">
       <article class="mt-3" *ngFor="let car of filteredCarList">
         <a [routerLink]="['/car-details/', car.id]">
-          <div class="carItem p-9">
+          <div class="car-item p-9">
 
             <img class="box-fit-contain article-image" src="{{car.photo}}" alt="">
 

@@ -27,7 +27,7 @@ export class CarListComponent {
   ngOnInit() {
 
     // get observable for all cars via http request
-    const carListObservable = this.dataBaseService.readCars()
+    const carListObservable = this.dataBaseService.readCars(1, 1)
 
     // subscribe to observable and save it
     this.carListSubscription = carListObservable.subscribe({
@@ -39,6 +39,8 @@ export class CarListComponent {
         this.error = err.message
       },
     })
+
+
   }
 
   // On Destruction
