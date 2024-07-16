@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Car } from './car-list/car';
-import { DataBaseService } from './db/data-base.service';
+import { Car } from './models/car';
+import { DataBaseService } from './services/db/data-base.service';
 
 @Component({
   selector: 'app-root',

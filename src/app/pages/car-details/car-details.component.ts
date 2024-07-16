@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Car } from '../car';
-import { DataBaseService } from '../../db/data-base.service';
+import { Car } from '../../models/car';
+import { DataBaseService } from '../../services/db/data-base.service';
 import { Subscription } from 'rxjs';
 
 @Component({

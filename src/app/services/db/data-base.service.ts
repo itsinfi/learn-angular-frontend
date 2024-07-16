@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Car } from '../car-list/car';
+import { Car } from '../../models/car';
 import * as mysql from 'mysql2/promise';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Car } from './car';
-import { DataBaseService } from '../db/data-base.service';
+import { Car } from '../../models/car';
+import { DataBaseService } from '../../services/db/data-base.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { CarCardComponent } from './car-card/car-card.component';
+import { CarCardComponent } from '../../components/car-card/car-card.component';
 
 @Component({
   selector: 'app-car-list',
@@ -12,7 +12,7 @@ import { CarCardComponent } from './car-card/car-card.component';
   styleUrl: './car-list.component.scss',
   imports: [
     CommonModule,
-    CarCardComponent
+    CarCardComponent,
   ],
 
 })
@@ -35,7 +35,7 @@ export class CarListComponent {
   ngOnInit() {
 
     // get observable for all cars via http request
-    const carListObservable = this.dataBaseService.readCars(2, 1)
+    const carListObservable = this.dataBaseService.readCars(10, 1)
 
     // subscribe to observable and save it
     this.carListSubscription = carListObservable.subscribe({
