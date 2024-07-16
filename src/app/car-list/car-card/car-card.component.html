@@ -1,0 +1,12 @@
+<a [routerLink]="['/car-details/', car.id]">
+  <div class="car-item p-9">
+
+    <img class="box-fit-contain article-image" src="{{car.photo}}" alt="">
+
+    <h4 class="">{{car.brand}} {{car.name}}</h4>
+    <div class="row jc-sb">
+      <p class="m-0 mr-3">{{car.horsepower}} HP</p>
+      <p class="m-0">{{car.price}}€</p>
+    </div>
+  </div>
+</a>
