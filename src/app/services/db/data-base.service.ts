@@ -19,14 +19,15 @@ export class DataBaseService {
   constructor(private http: HttpClient) { }
 
   // get all cars
-  readCars(limit: number, page: number): Observable<CarsResponse> {
+  readCars(limit: number, page: number, search: string): Observable<CarsResponse> {
 
     return this.http.get<CarsResponse>(`${this.apiUrl}/cars`, {
 
       // headers to add to request
       headers: new HttpHeaders({
-        'limit': limit,
-        'page': page,
+        limit,
+        page,
+        search
       }),
 
     })

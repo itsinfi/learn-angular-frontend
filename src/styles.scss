@@ -90,15 +90,8 @@ label {
   font-size: 18px;
 }
 
-input, button {
-  display: inline-block;
-}
-
 // Input field
 input {
-  max-width: 400px;
-  width: auto;
-  min-width: none;
   height: 45px;
   border-radius: var(--border-radius);
   border: none;
@@ -131,6 +124,7 @@ button {
 button:hover {
   background-color: var(--primary);
   outline: solid 1px var(--primary-50);
+  cursor: pointer;
 }
 
 // Image styling
