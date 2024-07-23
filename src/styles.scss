@@ -70,7 +70,11 @@ header {
   color: var(--light-text);
 }
 
-body, h2, h3, h4, h5, h6, p, input, button {
+.small-text {
+  font-size: 14px;
+}
+
+body, h2, h3, h4, h5, h6, p, input, button, option {
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: var(--dark-text);
 }

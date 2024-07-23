@@ -10,8 +10,8 @@
   transition: outline 50ms;
 }
 
-.page:hover {
-  outline: 2px solid var(--light-text);
+.page:hover, .limit-selection:hover {
+  outline: 1px solid var(--primary-12);
   cursor: pointer;
 }
 
@@ -27,4 +27,14 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50px, 50px));
   gap: 10px;
+}
+
+.limit-selection {
+  padding: 10px;
+  border-radius: var(--border-radius);
+  background-color: var(--light-text);
+  outline: none;
+  border: none;
+  will-change: outline;
+  transition: outline 50ms;
 }
