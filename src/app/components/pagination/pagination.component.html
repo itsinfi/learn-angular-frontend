@@ -1,1 +1,29 @@
-<p>pagination works!</p>
+<div class="row page-container">
+  <div *ngFor="let page of pages">
+    <div *ngIf="page != currentPage;else selectedPage">
+      <div class="page" (click)="changePage(page, limit)">
+        <p>{{page}}</p>
+      </div>
+    </div>
+
+
+    <ng-template #selectedPage>
+      <div class="selected-page page">
+        <p>{{page}}</p>
+      </div>
+    </ng-template>
+
+  </div>
+</div>
+
+
+<div class="row jc-sb">
+  <p>Amount of pages: {{pageCount}}</p>
+  <p>Pages: {{pages}}</p>
+</div>
+
+<div class="row jc-sb">
+  <p>Limit: {{limit}}</p>
+  <p>Page: {{currentPage}}</p>
+  <p>Total: {{total}}</p>
+</div>

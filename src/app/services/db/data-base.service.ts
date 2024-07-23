@@ -1,27 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../../models/car';
-import * as mysql from 'mysql2/promise';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
+import { map, Observable } from 'rxjs';
+import { CarsResponse } from '../../models/http/cars-response';
+
+
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataBaseService {
 
+  // TODO: read from config
   private apiUrl = 'http://localhost:3000'
 
   constructor(private http: HttpClient) { }
 
   // get all cars
-  readCars(limit: number, page: number): Observable<Car[]> {
+  readCars(limit: number, page: number): Observable<CarsResponse> {
 
-    const headers = new HttpHeaders({
-      'limit': limit,
-      'page': page
+    return this.http.get<CarsResponse>(`${this.apiUrl}/cars`, {
+
+      // headers to add to request
+      headers: new HttpHeaders({
+        'limit': limit,
+        'page': page,
+      }),
+
     })
-
-    return this.http.get<Car[]>(`${this.apiUrl}/cars`, { headers: headers });
   }
 
   // get single car

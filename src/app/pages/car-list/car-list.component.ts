@@ -4,6 +4,8 @@ import { DataBaseService } from '../../services/db/data-base.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { CarCardComponent } from '../../components/car-card/car-card.component';
+import { PaginationComponent } from '../../components/pagination/pagination.component';
+import { CarsResponse } from '../../models/http/cars-response';
 
 @Component({
   selector: 'app-car-list',
@@ -13,6 +15,7 @@ import { CarCardComponent } from '../../components/car-card/car-card.component';
   imports: [
     CommonModule,
     CarCardComponent,
+    PaginationComponent,
   ],
 
 })
@@ -28,32 +31,73 @@ export class CarListComponent {
   // error string
   error: string = "No cars found."
 
+  // attributes needed due to pagination
+  limit: number = 10
+  page: number = 1
+  total: number = 0
+
+  // callback function to call once the page is executed
+  onChangePage: Function = (newPage: number, limit: number) => {
+    console.log('execute onChangePage()')
+    if (this.carListSubscription) {
+      this.carListSubscription.unsubscribe()
+      this.carListSubscription.remove(() => {})
+    }
+
+    this.page = newPage
+    this.limit = limit
+
+    this.readCars()
+  }
+
   // Constructor
   constructor(private dataBaseService: DataBaseService) {}
 
   // On Construction
   ngOnInit() {
+    this.readCars()
+  }
+
+  // read cars via http request
+  readCars() {
 
     // get observable for all cars via http request
-    const carListObservable = this.dataBaseService.readCars(10, 1)
+    const carListObservable = this.dataBaseService.readCars(this.limit, this.page)
 
     // subscribe to observable and save it
     this.carListSubscription = carListObservable.subscribe({
-      next: cars => {
-        this.carList = cars
-        this.filteredCarList = cars
+      next: (response: CarsResponse) => {
+
+        try {
+
+          const { data, limit, total, page } = response ?? {};
+
+
+          // write list to carList and filteredCarList to initialize
+          this.carList = data;
+          this.filteredCarList = data;
+
+          // read pagination realted headers and store them
+          this.limit = limit ?? 10;
+          this.page = page ?? 1;
+          this.total = total ?? 0;
+
+        } catch (err) {
+          this.error = 'Something went wrong when trying to read the available cars.'
+        }
       },
       error: err => {
         this.error = err.message
       },
     })
-
-
   }
+
 
   // On Destruction
   ngOnDestroy() {
-    this.carListSubscription.unsubscribe()
+    if (this.carListSubscription) {
+      this.carListSubscription.unsubscribe()
+    }
   }
 
   // search for lego cars by title

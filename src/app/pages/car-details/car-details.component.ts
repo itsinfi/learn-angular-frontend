@@ -49,6 +49,8 @@ export class CarDetailsComponent {
 
   // On Deconstruction
   ngOnDestroy() {
-    this.carSubscription.unsubscribe()
+    if (this.carSubscription) {
+      this.carSubscription.unsubscribe()
+    }
   }
 }

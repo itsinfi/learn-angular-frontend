@@ -3,6 +3,15 @@
   <button (click)="searchLegoCars(search.value)">Search</button>
 </div>
 
+<div *ngIf="total !== 0">
+  <app-pagination
+    [limit]="limit"
+    [currentPage]="page"
+    [total]="total"
+    [onChangePage]="onChangePage">
+  </app-pagination>
+</div>
+
 <div class="scrollable-y h-70vh">
 
   <div [ngSwitch]="filteredCarList.length">
