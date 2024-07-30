@@ -1,26 +1,13 @@
 .page {
   background-color: var(--light-text);
-  border-radius: var(--border-radius);
   width: 50px;
   height: 50px;
   text-align: center;
   align-content: center;
   outline: 0 solid var(--light-text);
+  user-select: none;
   will-change: outline;
   transition: outline 50ms;
-}
-
-.page:hover, .limit-selection:hover {
-  outline: 1px solid var(--primary-12);
-  cursor: pointer;
-}
-
-.selected-page, .selected-page:hover {
-  background-color: var(--secondary-12);
-  outline: 1px solid var(--dark-text);
-  cursor: default;
-  will-change: none;
-  transition: none;
 }
 
 .page-container {
@@ -31,10 +18,31 @@
 
 .limit-selection {
   padding: 10px;
-  border-radius: var(--border-radius);
   background-color: var(--light-text);
   outline: none;
   border: none;
   will-change: outline;
   transition: outline 50ms;
+}
+
+.limit-option {
+  background-color: var(--light-text);
+  padding: 20px;
+}
+
+.page:hover, .limit-selection:hover, .limit-option:focus {
+  outline: 1px solid var(--primary-12);
+}
+
+.page, .limit-selection, .limit-option {
+  cursor: pointer;
+  border-radius: var(--border-radius);
+}
+
+.selected-page, .selected-page:hover {
+  background-color: var(--primary-12);
+  outline: 1px solid var(--dark-text);
+  cursor: default;
+  will-change: none;
+  transition: none;
 }

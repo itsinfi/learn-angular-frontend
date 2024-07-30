@@ -1,0 +1,30 @@
+.search-bar, .filter-option {
+  font-size: 12px;
+}
+
+.unselected-filter-option, .selected-filter-option {
+  font-size: 12px;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.unselected-filter-option {
+  background-color: var(--light-text);
+  border-radius: var(--border-radius);
+  outline: none;
+}
+
+.selected-filter-option {
+  background-color: var(--secondary-12);
+  border-radius: var(--border-radius);
+  outline: 1px solid var(--dark-text);
+}
+
+.filter-option:hover {
+  outline: 1px solid var(--primary-12);
+}

@@ -1,17 +1,15 @@
-<div class="row jc-sb mt-9 mb-6">
-  <input id="car-search" class="expanded ph-3 mr-3" #search type="text" placeholder="Ferrari F40" (keydown.enter)="searchLegoCars(search.value)">
-
-  <button (click)="searchLegoCars(search.value)">
-    <i class="fas fa-magnifying-glass"></i>
-    Search
-  </button>
-
-  <button class="ml-3" (click)="searchLegoCars(search.value)">
-    <i class="fas fa-filter"></i>
-    Filter
-  </button>
+<!-- Search & Filter -->
+<div class="mb-6">
+  <app-search
+    [onSearch]="onSearch"
+    [filterOptions]="brands"
+  >
+  </app-search>
 </div>
 
+
+
+<!-- Page and limit selection -->
 <div *ngIf="total() !== 0">
   <app-pagination
     [limit]="limit"
@@ -21,11 +19,15 @@
   </app-pagination>
 </div>
 
+
+
+<!-- Car List -->
 <div class="scrollable-y h-70vh">
 
+  <!-- Check for length of list -->
   <div [ngSwitch]="filteredCarList.length">
 
-
+    <!-- display error if list is empty -->
     <div *ngSwitchCase="0">
       <div class="car-item">
         <p class="p-6">
@@ -34,7 +36,7 @@
       </div>
     </div>
 
-
+    <!-- handle displaying a single car -->
     <div *ngSwitchCase="1">
       <article class="mt-3" *ngFor="let car of filteredCarList">
         <div class="row jc-sb">
@@ -44,7 +46,7 @@
       </article>
     </div>
 
-
+    <!-- Handle displaying two cars -->
     <div *ngSwitchCase="2">
       <div class="grid-container">
         <article class="mt-3" *ngFor="let car of filteredCarList">
@@ -54,7 +56,7 @@
       </div>
     </div>
 
-
+    <!-- Handle displaying n >= 3 cars -->
     <div *ngSwitchDefault>
       <div class="grid-container">
         <article class="mt-3" *ngFor="let car of filteredCarList">

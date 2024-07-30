@@ -6,7 +6,9 @@ import { Component, Input } from '@angular/core';
   selector: 'app-pagination',
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss',
-  imports: [CommonModule]
+  imports: [
+    CommonModule
+  ]
 })
 export class PaginationComponent {
 

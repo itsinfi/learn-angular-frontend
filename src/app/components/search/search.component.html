@@ -1,1 +1,50 @@
-<p>search works!</p>
+<!-- Search bar + search button + expand filter section button -->
+<div class="row jc-sb mt-9">
+
+  <!-- Search bar -->
+  <input id="car-search" class="search-bar expanded ph-3 mr-3" #search type="text" placeholder="Ferrari F40" (keydown.enter)="updateSearch(search.value)">
+
+  <!-- Search button -->
+  <button (click)="updateSearch(search.value)">
+    <i class="fas fa-magnifying-glass"></i>
+    Search
+  </button>
+
+  <!-- Expand filter button -->
+  <button class="ml-3" (click)="toggleFilterSection()">
+    <i class="fas fa-filter"></i>
+    Filter
+  </button>
+</div>
+
+<!-- show filter section? -->
+<div *ngIf="showFilter()">
+
+  <!-- Filter section -->
+  <div class="row mb-6 mt-3">
+    <div *ngFor="let filterOption of filterOptions">
+      <div [ngSwitch]="filterOption">
+
+        <!-- selected filter option -->
+        <div *ngSwitchCase="filter">
+          <div class="selected-filter-option" (click)="updateFilter(filterOption)">
+            <div class="row">
+              <i class="ml-3 fas fa-check"></i>
+              <p class="mh-3">{{filterOption}}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- unselected filter option -->
+        <div *ngSwitchDefault>
+          <div class="unselected-filter-option" (click)="updateFilter(filterOption)">
+            <p class="mh-3">{{filterOption}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

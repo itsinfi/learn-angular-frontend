@@ -117,6 +117,7 @@ button {
   color: var(--light-text);
   height: 45px;
   padding: 15px;
+  cursor: pointer;
   will-change: outline, background-color;
   transition: outline 500ms, background-color 500ms;
 }
@@ -124,7 +125,6 @@ button {
 button:hover {
   background-color: var(--primary);
   outline: solid 1px var(--primary-50);
-  cursor: pointer;
 }
 
 // Image styling
@@ -340,7 +340,7 @@ pr-9 {
   margin-top: 3rem;
 }
 
-.mb-1 {
+.mb-3 {
   margin-bottom: 1rem;
 }
 
