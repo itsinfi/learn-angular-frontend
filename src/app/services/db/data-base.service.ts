@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../../models/car';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { map, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { CarsResponse } from '../../models/http/cars-response';
 
 
@@ -35,7 +35,7 @@ export class DataBaseService {
 
   // get single car
   readCar(id: string): Observable<Car> {
-    return this.http.get<Car>(`${this.apiUrl}/cars/${id}`);
+    return this.http.get<Car>(`${this.apiUrl}/cars/details/${id}`);
   }
 
 }
