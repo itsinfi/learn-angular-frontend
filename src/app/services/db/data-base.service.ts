@@ -3,7 +3,6 @@ import { Car } from '../../models/car';
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CarsResponse } from '../../models/http/cars-response';
-import fs from 'fs';
 import { CarBrandsResponse } from '../../models/http/car-brands-response';
 
 
