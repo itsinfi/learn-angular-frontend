@@ -3,7 +3,7 @@ export interface Car {
   name: string,
   brand: string,
   horsepower: number,
-  isItalian: boolean,
+  origin: string,
   photo: string,
   price: number,
   description: string

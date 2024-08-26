@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CarsResponse } from '../../models/http/cars-response';
 import { CarBrandsResponse } from '../../models/http/car-brands-response';
+import { FlagResponse } from '../../models/http/flag-response';
 
 
 @Injectable({
@@ -57,6 +58,11 @@ export class DataBaseService {
    */
   readCarBrands(): Observable<CarBrandsResponse> {
     return this.http.get<CarBrandsResponse>(`${this.apiUrl}/cars/brands`);
+  }
+
+
+  readFlag(origin: string): Observable<FlagResponse> {
+    return this.http.get<FlagResponse>(`${this.apiUrl}/flag/${origin}`);
   }
 
 }

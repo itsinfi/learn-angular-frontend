@@ -26,14 +26,9 @@
           <p>{{car.price}}€</p>
         </div>
         <div class="expanded"></div>
-        <div class="mh-3" style="width: 60px;" *ngIf="car.isItalian; else germanFlag">
-          <img class="flag mh-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/0/03/Flag_of_Italy.svg/220px-Flag_of_Italy.svg.png" alt="ITALAIAN">
+        <div class="mh-3" style="width: 60px;">
+          <img class="flag mh-3 box-fit-cover" width="60px" src="{{flag}}" alt="ITALAIAN">
         </div>
-        <ng-template class="mr-3" #germanFlag>
-          <div class="mr-3" style="width: 60px;">
-            <img class="flag mr-3 box-fit-cover" width="60px" src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png" alt="ITALAIAN">
-          </div>
-        </ng-template>
       </div>
 
 

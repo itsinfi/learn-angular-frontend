@@ -11,11 +11,15 @@ import { Subscription } from 'rxjs';
 })
 export class CarDetailsComponent {
 
-  // subscription to car observable
+  // subscription to car & flag observable
   carSubscription!: Subscription
+  flagSubscription!: Subscription
 
   // car object
   car!: Car;
+
+  // flag
+  flag!: string;
 
   // error string
   error!: string;
@@ -38,6 +42,19 @@ export class CarDetailsComponent {
       // handle successful read
       next: car => {
         this.car = car
+
+        // read flag with origin of car
+        const _flag = this.dataBaseService.readFlag(car.origin);
+        this.flagSubscription = _flag.subscribe({
+          next: flag => {
+            this.flag = flag.data;
+          },
+
+          error: err => {
+            this.flag = '';
+          }
+
+        })
       },
 
       //handle unsuccessful read
